@@ -1,0 +1,19 @@
+<odoo>
+  <data>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="l10n_cl_hr_method.hr_indicadores_previsionales_view" model="ir.ui.view">
+        <field name="name">l10n_cl_hr_method.hr.indicadores.previsionales.view</field>
+        <field name="model">hr.indicadores</field>
+        <field name="inherit_id" ref="l10n_cl_hr.hr_indicadores_previsionales_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='tasa_independiente_modelo']" position="after">
+                <field name="tasa_afp_uno"/> <field name="tasa_sis_uno" nolabel="1"/><field name="tasa_independiente_uno" nolabel="1"/>
+            </xpath>
+
+        </field>
+    </record>
+
+  </data>
+</odoo>
