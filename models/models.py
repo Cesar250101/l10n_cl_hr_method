@@ -49,7 +49,8 @@ class Indicadores(models.Model):
         def string_divide(cad, cad2, rounded):
             return round(float(cad) / float(cad2), rounded)
         try:
-            self.tasa_afp_modelo = clear_string(letters[7].select("strong")[25].get_text())
-            self.tasa_sis_modelo = clear_string(letters[7].select("strong")[26].get_text())
+            self.tasa_afp_uno = clear_string(letters[7].select("strong")[23].get_text())
+            self.tasa_sis_uno = clear_string(letters[7].select("strong")[24].get_text())            
+            self.tasa_independiente_uno = clear_string(letters[7].select("strong")[25].get_text())
         except ValueError:
             return ""
