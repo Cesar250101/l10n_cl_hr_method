@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_rule_46" model="hr.salary.rule">
+            <field name="name">Descuento 3% Ptmo Solidario</field>
+            <field name="sequence" eval="6"/>
+            <field name="code">PTMOSOLID</field>
+            <field name="category_id" ref="l10n_cl_hr.ODESC"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">if (contract.tiene_ptmo_solidario):
+    result = round(categories.IMPONIBLE-payslip.afp-payslip.SALUD-payslip.IMPUNI)*(3/100)
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

@@ -15,5 +15,19 @@
         </field>
     </record>
 
+    <!-- model.name inherit form view -->
+    <record id="l10n_cl_hr_method.hr_contract_view_form" model="ir.ui.view">
+      <field name="name">l10n.cl.hr.method.hr.contract.view.form</field>
+      <field name="model">hr.contract</field>
+      <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//group[@name='duration_group']" position="inside">
+          <field name="tiene_ptmo_solidario" />
+        </xpath>
+        
+      </field>
+    </record>
+
+
   </data>
 </odoo>

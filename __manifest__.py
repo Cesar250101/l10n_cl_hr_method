@@ -21,13 +21,14 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','l10n_cl_hr'],
+    'depends': ['base','l10n_cl_hr','hr_payroll','hr_payroll_account'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'data/l10n_cl_hr_method_payroll_data.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

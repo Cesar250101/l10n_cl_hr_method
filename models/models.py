@@ -17,6 +17,13 @@ MONTH_LIST= [('1', 'Enero'),
         ('10', 'Octubre'), ('11', 'Noviembre'),
         ('12', 'Diciembre')]
 
+class Contrato(models.Model):
+    _inherit = 'hr.contract'
+
+    tiene_ptmo_solidario = fields.Boolean(string='Descto Ptmo Solidario')
+    
+
+
 
 class Indicadores(models.Model):
     _inherit = 'hr.indicadores'
