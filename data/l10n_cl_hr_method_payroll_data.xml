@@ -8,10 +8,9 @@
             <field name="code">PTMOSOLID</field>
             <field name="category_id" ref="l10n_cl_hr.ODESC"/>
             <field name="condition_select">python</field>
-            <field name="condition_python">none</field>
+            <field name="condition_python">result=contract.tiene_ptmo_solidario</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">if (contract.tiene_ptmo_solidario):
-    result = round(categories.IMPONIBLE-payslip.afp-payslip.SALUD-payslip.IMPUNI)*(3/100)
+            <field name="amount_python_compute">result = round(TRIBU)*(3/100)
             </field>
         </record>
 
