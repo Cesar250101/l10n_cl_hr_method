@@ -25,39 +25,39 @@ class Contrato(models.Model):
 
 
 
-class Indicadores(models.Model):
-    _inherit = 'hr.indicadores'
+# class Indicadores(models.Model):
+#     _inherit = 'hr.indicadores'
 
-    tasa_afp_uno = fields.Float('Uno', help="Tasa AFP Uno")
-    tasa_sis_uno = fields.Float('SIS', help="Tasa SIS Uno")
-    tasa_independiente_uno = fields.Float('SIS', help="Tasa Independientes Uno")
+#     tasa_afp_uno = fields.Float('Uno', help="Tasa AFP Uno")
+#     tasa_sis_uno = fields.Float('SIS', help="Tasa SIS Uno")
+#     tasa_independiente_uno = fields.Float('SIS', help="Tasa Independientes Uno")
 
 
-    @api.one
-    def update_document(self):
-        super(Indicadores, self).update_document()
-        self.update_date = datetime.today()
-        try:
-            html_doc = urlopen('https://www.previred.com/web/previred/indicadores-previsionales').read()
-            soup = BeautifulSoup(html_doc, 'html.parser')
+#     @api.one
+#     def update_document(self):
+#         super(Indicadores, self).update_document()
+#         self.update_date = datetime.today()
+#         try:
+#             html_doc = urlopen('https://www.previred.com/web/previred/indicadores-previsionales').read()
+#             soup = BeautifulSoup(html_doc, 'html.parser')
 
-            letters = soup.find_all("table")
+#             letters = soup.find_all("table")
 
-            def clear_string(cad):
-                cad = cad.replace(".", '').replace("$", '').replace(" ", '')
-                cad = cad.replace("Renta", '').replace("<", '').replace(">", '')
-                cad = cad.replace("=", '').replace("R", '').replace("I", '').replace("%", '')
-                cad = cad.replace(",", '.')
-                cad = cad.replace("1ff8","")
-                return cad
-        except ValueError:
-            return ""
+#             def clear_string(cad):
+#                 cad = cad.replace(".", '').replace("$", '').replace(" ", '')
+#                 cad = cad.replace("Renta", '').replace("<", '').replace(">", '')
+#                 cad = cad.replace("=", '').replace("R", '').replace("I", '').replace("%", '')
+#                 cad = cad.replace(",", '.')
+#                 cad = cad.replace("1ff8","")
+#                 return cad
+#         except ValueError:
+#             return ""
 
-        def string_divide(cad, cad2, rounded):
-            return round(float(cad) / float(cad2), rounded)
-        try:
-            self.tasa_afp_uno = clear_string(letters[8].select("strong")[26].get_text())
-            self.tasa_sis_uno = clear_string(letters[8].select("strong")[27].get_text())            
-            self.tasa_independiente_uno = clear_string(letters[8].select("strong")[28].get_text())
-        except ValueError:
-            return ""
+#         def string_divide(cad, cad2, rounded):
+#             return round(float(cad) / float(cad2), rounded)
+#         try:
+#             self.tasa_afp_uno = clear_string(letters[8].select("strong")[26].get_text())
+#             self.tasa_sis_uno = clear_string(letters[8].select("strong")[27].get_text())            
+#             self.tasa_independiente_uno = clear_string(letters[8].select("strong")[28].get_text())
+#         except ValueError:
+#             return ""
